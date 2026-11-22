@@ -13,8 +13,8 @@ velocityY = 0
 gravity = 200
 thrust = 1000
 angularThrust = 10
-friction = 0.01
-angularFriction = 0.01
+friction = 1
+angularFriction = 1
 running = True
 
 pygame.init()
@@ -47,9 +47,9 @@ while running:
 		velocityY += thrust * dt * math.sin(angle)
 
 	# friction
-	velocityX *= (1-friction)
-	velocityY *= (1-friction)
-	angularVelocity *= (1-angularFriction)
+	velocityX *= (1-friction * dt)
+	velocityY *= (1-friction * dt)
+	angularVelocity *= (1-angularFriction * dt)
 
 	# apply velocity and angular velocity to position and angle
 	x += velocityX * dt
